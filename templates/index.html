@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>To Do List</title>	
+
+    <link     href='http://fonts.googleapis.com/css?family=Sintony:400,700'     rel='stylesheet' type='text/css'>
+
+    <style type="text/css">    
+      body
+      {
+        background-color:#000;
+      }
+
+      h1
+      {
+        font-size:48px;
+        margin-top:0;
+        font-family:Arial, sans-serif;
+        text-shadow:2px 0 15px #292929;
+        letter-spacing:4px;
+        text-decoration:none;
+        color:#DDD;
+      }
+
+      form
+      {
+        font-size:48px;
+        margin-top:0;
+	text-align:center;
+        font-family:Arial, sans-serif;
+        text-shadow:2px 0 15px #292929;
+        letter-spacing:4px;
+        text-decoration:none;
+        color:#DDD;
+      }
+
+      #banner
+      {
+        width:1600px;
+        height:600px;
+        text-align:center;
+        background-image:url(https://static.pexels.com/photos/3299/postit-scrabble-to-do.jpg);
+        background-repeat:no-repeat;
+        border-radius:5px;
+        margin:10px auto auto;
+        padding:500px 0 0 0;
+      }
+
+      .lead
+      {
+        background-color:rgba(255,255,255,0.6);
+        border-radius:3px;
+        box-shadow:rgba(0,0,0,0.2) 0 1px 3px;
+        font-family:Sintony, sans-serif;
+      }
+    </style>
+
+  </head>  
+
+  <body>
+    <div id="banner">
+	<ul>
+	{% for i in toDo %}
+      <li>{{ toDo }}</li>
+	{% endfor %}
+	</ul>
+    </div>
+    <div id="form">
+	<form action="/submit" method="post">
+		<input type="text" name="task" placeholder="Task"></input>
+		<input type="text" name="email" placeholder="Email"></input>
+		<select name="priority">
+			<option value="default">Priority Level</option>
+			<option value="low">Low</option>
+			<option value="medium">Medium</option>
+			<option value="high">High</option>
+		</select>
+		<input type="submit" value="Add To List">
+	</form>
+	<form action="/clear" method="post">
+		<input type="submit" value="Clear List"></input>
+	<form action="/save" method="post">
+		<input type="submit" value="Save List"></input>
+	</form>
+    </div>
+  </body>
+</html>
